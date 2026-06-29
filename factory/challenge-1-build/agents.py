@@ -142,10 +142,7 @@ class AnomalyDetectionAgent:
 
     def create(self):
         """Create the anomaly detection agent in Foundry."""
-        self.client = AIProjectClient(
-            endpoint=PROJECT_CONNECTION_STRING,
-            credential=DefaultAzureCredential(),
-        )
+        self.client = AIProjectClient.from_connection_string(PROJECT_CONNECTION_STRING)
         self.openai = self.client.get_openai_client()
 
         system_prompt = """
@@ -235,10 +232,7 @@ class FaultDiagnosisAgent:
 
     def create(self):
         """Create the fault diagnosis agent in Foundry."""
-        self.client = AIProjectClient(
-            endpoint=PROJECT_CONNECTION_STRING,
-            credential=DefaultAzureCredential(),
-        )
+        self.client = AIProjectClient.from_connection_string(PROJECT_CONNECTION_STRING)
         self.openai = self.client.get_openai_client()
 
         system_prompt = """
